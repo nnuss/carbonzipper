@@ -345,8 +345,12 @@ func findHandler(w http.ResponseWriter, req *http.Request) {
 
 		for _, metric := range metrics {
 			mm := map[string]interface{}{
-				"metric_path": *metric.Path,
-				"isLeaf":      *metric.IsLeaf,
+				//Graphite 0.9.x series
+				//"metric_path": *metric.Path,
+				//"isLeaf":      *metric.IsLeaf,
+				//Graphite 0.10.x series
+				"path":    *metric.Path,
+				"is_leaf": *metric.IsLeaf,
 			}
 			result = append(result, mm)
 		}
